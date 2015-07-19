@@ -3,22 +3,25 @@ package leetCode;
 import utils.ListNode;
 
 /**
- * You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
-
-Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
-Output: 7 -> 0 -> 8
-
-https://leetcode.com/problems/add-two-numbers/
-
-给定两个链表代表两组非负数字 , 如 2->4->3 , 5->6->4 , 将两个链表数字求和 返回这个链表
-
-
-
-
-
-
-
- *
+ * You are given two linked lists representing two non-negative numbers. The
+ * digits are stored in reverse order and each of their nodes contain a single
+ * digit. Add the two numbers and return it as a linked list.
+ * 
+ * Input: (2 -> 4 -> 3) + (5 -> 6 -> 4) Output: 7 -> 0 -> 8
+ * 
+ * https://leetcode.com/problems/add-two-numbers/
+ * 
+ * 给定两个链表代表两组非负数字 , 如 2->4->3 , 5->6->4 , 将两个链表数字求和 返回这个链表
+ * 
+ * 
+ * 解题思路 : 
+ * 
+ * 遍历两个链表 , 将对应数字加和 , 如果数字大于10 那么向后进位即可 , 注意判断最后一位
+ * 
+ * 
+ * 
+ * 
+ * 
  */
 public class AddTwoNumbers {
 	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
