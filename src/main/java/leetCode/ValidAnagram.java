@@ -16,6 +16,7 @@ import java.util.Map;
  * 假设string中只有小写字母
  * 
  */
+@SuppressWarnings(value = "all")
 public class ValidAnagram {
 	public boolean isAnagram(String s, String t) {
 		return bestSolution(s, t);

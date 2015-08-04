@@ -18,6 +18,7 @@ import java.util.Set;
  * 
  * 
  */
+@SuppressWarnings(value = "all")
 public class LengthOfLongestSubstring {
 	public int lengthOfLongestSubstring(String s) {
 		return onlineBestSolution(s);
