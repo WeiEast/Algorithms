@@ -48,6 +48,7 @@ public class PascalsTriangleII {
 	 * @param rowIndex
 	 * @return
 	 */
+	@SuppressWarnings(value = "all")
 	private List<Integer> mySolution(int rowIndex) {
 
 		if (rowIndex < 0) {

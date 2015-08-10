@@ -1,5 +1,9 @@
 package utils;
 
+/**
+ * 链表
+ *
+ */
 public class ListNode {
 	public int val;
 
