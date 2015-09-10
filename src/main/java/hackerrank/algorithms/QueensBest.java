@@ -1,20 +1,20 @@
 package hackerrank.algorithms;
 
 /**
- * N皇后 ， 递归算法
+ * N皇后 ， 筛选法
  *
  */
-public class QueensRevised {
+public class QueensBest {
 	int N;
 
 	public static void main(String[] args) {
-		QueensRevised q = new QueensRevised();
-		q.solution(29);
+		QueensBest q = new QueensBest();
+		q.trysolution(29);
 	}
 
 	long currentTimeMillis;
 
-	private void solution(int n) {
+	private void trysolution(int n) {
 		N = n;
 		int[] grid = new int[n + 1];
 		currentTimeMillis = System.currentTimeMillis();
