@@ -110,18 +110,48 @@ public class BotClean {
 		}
 	}
 
-	static int grid[][];
-
 	static void next_best(int posr, int posc, String[] board) {
-		grid = new int[board.length][board.length];
+		int shortpath = 9;
+		int x = 0;
+		int y = 0;
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board.length; j++) {
 				char key = board[i].charAt(j);
 				if (key == 'd') {
-					grid[i][j] = 1;
+					if (Math.abs(posr - i) + Math.abs(posc - j) < shortpath) {
+						x = i;
+						y = j;
+						shortpath = Math.abs(posr - i) + Math.abs(posc - j);
+					}
 				}
 			}
 		}
+		if (!(posr == x)) {
+			if (posr < x) {
+				System.out.println("DOWN");
+				posr++;
+			} else if (posr == x) {
+
+			} else {
+				System.out.println("UP");
+				posr--;
+			}
+
+		} else if (!(posc == y)) {
+			if (posc < y) {
+				System.out.println("RIGHT");
+				posc++;
+			} else if (posc == y) {
+
+			} else {
+				System.out.println("LEFT");
+				posc--;
+			}
+
+		} else {
+			System.out.println("CLEAN");
+		}
+		return;
 
 		// Math.abs(a)
 
@@ -135,7 +165,7 @@ public class BotClean {
 			pos[i] = in.nextInt();
 		for (int i = 0; i < 5; i++)
 			board[i] = in.next();
-		next_move(pos[0], pos[1], board);
+		next_best(pos[0], pos[1], board);
 	}
 
 }
