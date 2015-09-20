@@ -142,16 +142,19 @@ public class MyGenetic {
 	@AllArgsConstructor
 	@NoArgsConstructor
 	public static class Gene {
-		int select;
-		int key;
 
 		public Gene(String val) {
 			super();
 			this.val = val;
 		}
 
+		// 对应的map里面的key键值
+		int key;
+		// 对应的适应度
 		double f;
+		// 对应的基因编码
 		String val;
+		// 对应的选择概率
 		double p;
 	}
 

@@ -15,20 +15,22 @@ public class BalancedBinaryTree {
 	}
 
 	private boolean mySolution(TreeNode root) {
-		dfs(root, 0, 0);
-		return true;
+		return dfs(root) != -1;
+
 	}
 
-	private void dfs(TreeNode root, int left, int right) {
+	private int dfs(TreeNode root) {
 		if (root == null)
-			return;
-		System.out.println(root.val + "," + left + "," + right);
-		if (root.left != null) {
-			dfs(root.left, left, right);
+			return 0;
+
+		int left = dfs(root.left);
+		int right = dfs(root.right);
+		if (left == -1 || right == -1)
+			return -1;
+		if (Math.abs(left - right) > 1) {
+			return -1;
 		}
-		if (root.right != null) {
-			dfs(root.right, left, right);
-		}
+		return Math.max(left, right) + 1;
 	}
 
 	public static void main(String[] args) {
@@ -36,7 +38,7 @@ public class BalancedBinaryTree {
 		TreeNode t = new TreeNode(1);
 		t.left = new TreeNode(2);
 		t.left.left = new TreeNode(3);
-		// t.left.left.left = new TreeNode(7);`
+		t.left.left.left = new TreeNode(7);
 		t.left.right = new TreeNode(5);
 		t.right = new TreeNode(4);
 		System.out.println(b.isBalanced(t));

@@ -1,5 +1,7 @@
 package hackerrank.algorithms.Implementation;
 
+import java.util.Scanner;
+
 /**
  * Problem Statement
 
@@ -42,7 +44,24 @@ package hackerrank.algorithms.Implementation;
  *
  */
 public class UtopianTree {
+
+	private static int getNext(int n) {
+		int ret = 1;
+		for (int i = 1; i <= n; i++) {
+			if (i % 2 != 0) {
+				ret *= 2;
+			} else {
+				ret += 1;
+			}
+		}
+		return ret;
+	}
+
 	public static void main(String[] args) {
-		
+		Scanner in = new Scanner(System.in);
+		int t = in.nextInt();
+		for (int i = 0; i < t; i++) {
+			System.out.println(getNext(in.nextInt()));
+		}
 	}
 }
