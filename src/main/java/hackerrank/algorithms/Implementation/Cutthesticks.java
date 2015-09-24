@@ -12,35 +12,35 @@ public class Cutthesticks {
 		}
 
 		int size = grid.length;
+		System.out.println(size);
 		while (size > 0) {
-			size = swap(grid, size);
-			System.out.println(size);
-			for (int i = 0; i < size; i++) {
-				grid[i] = grid[i] - 1;
+			int countZero = countZero(grid);
+			if (countZero > 0) {
+				if (size != countZero) {
+					size = countZero;
+					System.out.println(size);
+				}
+				for (int i = 0; i < grid.length; i++) {
+					grid[i] = grid[i] - 1;
+				}
+
+			} else {
+				break;
 			}
 
 		}
 
 	}
 
-	static int swap(int[] grid, int size) {
-		int end = size;
-		for (int i = 0, j = end - 1; i < j; i++, j--) {
-			for (; i < j && grid[i] != 0; ++i)
-				;
-			for (; j > i && grid[j] == 0; --j)
-				;
-			if (i < j) {
-				size = j;
-				int temp = grid[i];
-				grid[i] = grid[j];
-				grid[j] = temp;
-			}
+	static int countZero(int[] grid) {
+		int count = 0;
+		for (int i = 0; i < grid.length; i++) {
 
+			if (grid[i] > 0) {
+				count++;
+			}
 		}
-		if (size == 1 && grid[0] == 0) {
-			size = 0;
-		}
-		return size;
+		return count;
 	}
+
 }
