@@ -1,7 +1,5 @@
 package leetCode;
 
-import java.util.Stack;
-
 import utils.TreeNode;
 
 /**
@@ -20,24 +18,15 @@ public class MinimumDepthofBinaryTree {
 	}
 
 	private int mySolution(TreeNode root) {
-
-		Stack<TreeNode> t = new Stack<TreeNode>();
-
-		t.push(root);
-		TreeNode pop = null;
-
-		while (!t.isEmpty()) {
-			pop = t.pop();
-			System.out.println(pop.val);
-			if (pop.right != null) {
-				t.push(pop.right);
-			}
-			if (pop.left != null) {
-				t.push(pop.left);
-			}
-
+		if (root == null) {
+			return 0;
 		}
-
-		return 0;
+		int left = mySolution(root.left);
+		int right = mySolution(root.right);
+		if (right != 0 && left != 0) {
+			return Math.min(left, right) + 1;
+		}
+		return Math.max(left + 1, right + 1);
 	}
+
 }

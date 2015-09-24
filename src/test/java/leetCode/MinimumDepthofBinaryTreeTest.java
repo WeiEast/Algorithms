@@ -19,8 +19,8 @@ public class MinimumDepthofBinaryTreeTest {
 		t.left.left = new TreeNode(2);
 		t.left.left.left = new TreeNode(2);
 		t.left.left.left.left = new TreeNode(2);
-		t.right = new TreeNode(3);
+//		t.right = new TreeNode(3);
 
-		m.minDepth(t);
+		System.out.println(m.minDepth(t));
 	}
 }
