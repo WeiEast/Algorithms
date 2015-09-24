@@ -1,4 +1,4 @@
-package lintcode.String;
+package lintcode.America.String;
 
 /**
  * 给出两个字符串，找到最长公共子串，并返回其长度。
