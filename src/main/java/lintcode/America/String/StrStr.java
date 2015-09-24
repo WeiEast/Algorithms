@@ -1,4 +1,4 @@
-package lintcode.String;
+package lintcode.America.String;
 
 /**
  * 字符串查找（又称查找子字符串），是字符串操作中一个很有用的函数。你的任务是实现这个函数。

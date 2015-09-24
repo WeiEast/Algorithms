@@ -1,4 +1,4 @@
-package lintcode.Array;
+package lintcode.America.Array;
 
 /**
  * 合并两个排序的整数数组A和B变成一个新的数组。

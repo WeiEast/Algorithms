@@ -1,4 +1,4 @@
-package lintcode.Array;
+package lintcode.America.Array;
 
 /**
  * 给定一个排序数组，在原数组中删除重复出现的数字，使得每个元素只出现一次，并且返回新的数组的长度。

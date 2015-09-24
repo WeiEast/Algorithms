@@ -1,4 +1,4 @@
-package lintcode.String;
+package lintcode.America.String;
 
 /**
  * 给k个字符串，求出他们的最长公共前缀(LCP)

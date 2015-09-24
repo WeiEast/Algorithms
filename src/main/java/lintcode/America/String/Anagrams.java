@@ -1,4 +1,4 @@
-package lintcode.String;
+package lintcode.America.String;
 
 import java.util.ArrayList;
 import java.util.Arrays;

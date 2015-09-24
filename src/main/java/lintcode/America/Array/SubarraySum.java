@@ -1,4 +1,4 @@
-package lintcode.Array;
+package lintcode.America.Array;
 
 import java.util.ArrayList;
 
