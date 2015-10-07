@@ -288,10 +288,63 @@ public class ListNodeInterview {
 	 * @return
 	 */
 	public ListNode insertionSortList(ListNode head) {
+		if (head == null)
+			return null;
 		ListNode l1 = new ListNode(head.val);
-		
+		ListNode k1 = l1;
+		head = head.next;
+		ListNode pre = null;
+		while (head != null) {
+			int key = head.val;
+			k1 = l1;
+			while (k1 != null && k1.val < key) {
+				pre = k1;
+				k1 = k1.next;
+			}
+			if (k1 != null) {
+				ListNode list = new ListNode(key);
+				list.next = k1;
+				if (pre == null) {
+					l1 = list;
+				} else {
+					pre.next = new ListNode(key);
+					pre.next.next = k1;
+				}
+			} else {
+				pre.next = new ListNode(key);
+			}
+			pre = null;
+			head = head.next;
+		}
 		return l1;
 
+	}
+
+	/**
+	 * 返回链表环结点
+	 * 
+	 * 
+	 * Given a linked list, return the node where the cycle begins. If there is no cycle, return null.
+	
+		Note: Do not modify the linked list.
+	
+		Follow up:
+		Can you solve it without using extra space?
+	 * 
+	 * @param head
+	 * @return
+	 */
+	public ListNode detectCycle(ListNode head) {
+		ListNode n1 = head;
+		ListNode n2 = head;
+		
+		while(n1!=null){
+			
+			
+			
+		}
+		
+		return null;
 	}
 
 	public static void main(String[] args) {
@@ -311,7 +364,12 @@ public class ListNodeInterview {
 		ListNode listNode4 = new ListNode(0);
 		listNode4.next = new ListNode(1);
 		listNode4.next.next = new ListNode(0);
-		log.info(l.insertionSortList(listnode3));
+
+		ListNode listNode5 = new ListNode(5);
+		listNode5.next = new ListNode(7);
+		listNode5.next.next = new ListNode(6);
+		log.info(listnode3);
+		// log.info(l.insertionSortList(listNode5));
 		// log.info(l.removeElements(listNode4, 0));
 		// log.info(l.deleteDuplicates(listNode4));
 
