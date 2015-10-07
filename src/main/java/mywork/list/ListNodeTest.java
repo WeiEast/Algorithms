@@ -4,7 +4,7 @@ import lombok.extern.log4j.Log4j;
 import utils.ListNode;
 
 @Log4j
-public class ListNodeInterview {
+public class ListNodeTest {
 
 	/**
 	 * 求单链表中结点的个数
@@ -337,18 +337,16 @@ public class ListNodeInterview {
 	public ListNode detectCycle(ListNode head) {
 		ListNode n1 = head;
 		ListNode n2 = head;
-		
-		while(n1!=null){
-			
-			
-			
+
+		while (n1 != null) {
+
 		}
-		
+
 		return null;
 	}
 
 	public static void main(String[] args) {
-		ListNodeInterview l = new ListNodeInterview();
+		ListNodeTest l = new ListNodeTest();
 		ListNode listNode = new ListNode(1);
 		listNode.next = new ListNode(2);
 		listNode.next.next = new ListNode(3);
