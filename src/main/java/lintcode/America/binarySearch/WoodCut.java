@@ -1,4 +1,4 @@
-package lintcode.binarySearch;
+package lintcode.America.binarySearch;
 
 /**
  * 有一些原木，现在想把这些木头切割成一些长度相同的小段木头，需要得到的小段的数目至少为 k。当然，我们希望得到的小段越长越好，你需要计算能够得到的小段木头的最大长度。

@@ -1,4 +1,4 @@
-package lintcode.binarySearch;
+package lintcode.America.binarySearch;
 
 import lombok.extern.log4j.Log4j;
 
