@@ -1,5 +1,7 @@
 package lintcode.America.binarySearch;
 
+import java.util.Arrays;
+
 import lombok.extern.log4j.Log4j;
 
 /**
@@ -130,12 +132,86 @@ public class BinarySearchSolution {
 	 * @return
 	 */
 	public int search(int[] A, int target) {
-		
+		int i = 0;
+		int j = A.length - 1;
+
+		while (i <= j) {
+
+			int mid = (i + j) / 2;
+			// 如果左边是正序
+			if (A[mid] > A[i]) {
+				if (target < A[i] && target < A[mid]) {
+					i = mid + 1;
+				} else if (A[mid] == target) {
+					return mid;
+				} else if (target > A[mid]) {
+					i = mid + 1;
+				} else {
+					j = mid - 1;
+				}
+			} else {
+				if (A[mid] < target && target > A[j]) {
+					j = mid - 1;
+				} else if (A[mid] == target) {
+					return mid;
+				} else if (target < A[mid]) {
+					j = mid - 1;
+				} else {
+					i = mid + 1;
+				}
+			}
+
+		}
+		return -1;
+	}
+
+	public int[] searchRange(int[] A, int target) {
+
+		int[] res = new int[2];
+
+		int i = 0;
+		int j = A.length - 1;
+
+		while (i <= j) {
+			int mid = (i + j) / 2;
+
+			if (target < A[mid]) {
+				j = mid - 1;
+			} else if (target > A[mid]) {
+				i = mid + 1;
+			} else {
+				break;
+			}
+
+		}
+		if (i > j) {
+			res[0] = -1;
+			res[1] = -1;
+			return res;
+		}
+		int m = (i + j) / 2 - 1;
+		int q = m + 2;
+
+		while (m >= 0 && A[m] == target) {
+			m--;
+		}
+
+		while (q < A.length && A[q] == target) {
+			q++;
+		}
+
+		res[0] = m + 1;
+		res[1] = q - 1;
+
+		return res;
 	}
 
 	public static void main(String[] args) {
 		BinarySearchSolution b = new BinarySearchSolution();
-		log.info(b.findFirstBadVersion(5));
+		// log.info(b.findFirstBadVersion(5));
+		// log.info(b.search(new int[] { 0, 1, 2, -10, -9, -8, -7, -6, -5, -4,
+		// -3, -2, -1 }, -9));
+		log.info(Arrays.toString(b.searchRange(new int[] { 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 }, 5)));
 	}
 
 }
