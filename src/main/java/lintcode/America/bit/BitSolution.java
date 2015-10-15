@@ -83,7 +83,31 @@ public class BitSolution {
 		return res;
 	}
 
-	
+	public int updateBits(int n, int m, int i, int j) {
+		long rightMask = ~0 >> i;
+		rightMask = ~(rightMask << i);// 00000xxx
+		long leftMask = ~0 >> (j + 1);
+		leftMask = leftMask << (j + 1);// xxxxx00000000
+		long mask = leftMask | rightMask;// xxx00000xxx
+		n = (int) (n & mask);
+		n = (int) (n | (m << i));
+		return n;
+	}
+
+	public int numTrees(int n) {
+		int[] count = new int[n + 1];
+		count[0] = 1;
+		if (n == 0)
+			return count[n];
+		count[1] = 1;
+		for (int i = 2; i <= n; i++) {
+			for (int j = 0; j < i; j++) {
+				count[i] += count[j] * count[i - j - 1];
+			}
+
+		}
+		return count[n];
+	}
 
 	public static void main(String[] args) {
 		BitSolution b = new BitSolution();
@@ -91,7 +115,6 @@ public class BitSolution {
 		// log.info(b.checkPowerOf2(0));
 		// log.info(b.uniquePaths(2, 62));
 		// log.info(b.trailingZeros(105));
-		
 
 	}
 }
