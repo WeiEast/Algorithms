@@ -24,6 +24,7 @@ public class QueensBest {
 
 	private void trysolution(int n) {
 		N = n;
+		N = 1;
 		int[] grid = new int[n + 1];
 		currentTimeMillis = System.currentTimeMillis();
 		for (int i = 11; i <= 19; i++) {
