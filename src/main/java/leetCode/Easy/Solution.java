@@ -1,5 +1,9 @@
 package leetCode.Easy;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
 import utils.TreeNode;
 
 /**
@@ -66,8 +70,100 @@ public class Solution {
 		return symmetric(t1.left, t2.right) && symmetric(t1.right, t2.left);
 	}
 
+	/**
+	 * You are playing the following Bulls and Cows game with your friend: You write down a number and ask your friend to guess what the number is. Each time your friend makes a guess, you provide a hint that indicates how many digits in said guess match your secret number exactly in both digit and position (called "bulls") and how many digits match the secret number but locate in the wrong position (called "cows"). Your friend will use successive guesses and hints to eventually derive the secret number.
+	
+	For example:
+	
+	Secret number:  "1807"
+	Friend's guess: "7810"
+	Hint: 1 bull and 3 cows. (The bull is 8, the cows are 0, 1 and 7.)
+	Write a function to return a hint according to the secret number and friend's guess, use A to indicate the bulls and B to indicate the cows. In the above example, your function should return "1A3B".
+	
+	Please note that both secret number and friend's guess may contain duplicate digits, for example:
+	
+	Secret number:  "1123"
+	Friend's guess: "0111"
+	In this case, the 1st 1 in friend's guess is a bull, the 2nd or 3rd 1 is a cow, and your function should return "1A1B".
+	You may assume that the secret number and your friend's guess only contain digits, and their lengths are always equal.
+	 * @param secret
+	 * @param guess
+	 * @return
+	 */
+	public String getHint(String secret, String guess) {
+		return bestSolution(secret, guess);
+
+	}
+
+	private String bestSolution(String secret, String guess) {
+		int len = secret.length();
+		int A = 0;
+		int B = 0;
+		int count[] = new int[10];
+		for (int i = 0; i < len; i++) {
+			int s = secret.charAt(i) - '0';
+			int g = guess.charAt(i) - '0';
+			if (s == g) {
+				A++;
+			} else {
+				if (count[g] > 0) { //如果g这里之前多出一个和g匹配的则B加1  
+					B++;
+				}
+
+				if (count[s] < 0) { //如果之前少一个和s匹配的，则B加1  
+					B++;
+				}
+
+				count[g]--; //缺一个和g匹配的  
+				count[s]++; //s这里多一个匹配的  
+			}
+		}
+		return A + "A" + B + "B";
+
+	}
+
+	private String uglySolution(String secret, String guess) {
+		Map<Integer, Character> map = new HashMap<Integer, Character>();
+		Map<Integer, Character> map2 = new HashMap<Integer, Character>();
+		int count = 0;
+		int count2 = 0;
+		for (int i = 0; i < secret.length(); i++) {
+			map.put(i, secret.charAt(i));
+		}
+		for (int i = 0; i < guess.length(); i++) {
+			map2.put(i, guess.charAt(i));
+		}
+		for (int i = 0; i < guess.length(); i++) {
+			if (map.get(i) == map2.get(i)) {
+				count++;
+				map.remove(i);
+				map2.remove(i);
+			}
+		}
+
+		for (Map.Entry<Integer, Character> entry : map2.entrySet()) {
+			int flag = -1;
+			int d = entry.getKey();
+			for (Map.Entry<Integer, Character> entry2 : map.entrySet()) {
+				char e = entry2.getValue();
+				if (e == map2.get(d)) {
+					flag = entry2.getKey();
+					count2++;
+					break;
+				}
+			}
+			if (flag >= 0) {
+				map.put(flag, '#');
+				flag = 0;
+			}
+		}
+
+		return count + "A" + count2 + "B";
+	}
+
 	public static void main(String[] args) {
 		Solution s = new Solution();
 		System.out.println(s.canWinNim(5));
+		System.out.println(s.getHint("1234", "0111"));
 	}
 }
