@@ -2,8 +2,9 @@ package leetCode.Easy;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Stack;
 
+import utils.ListNode;
 import utils.TreeNode;
 
 /**
@@ -161,9 +162,76 @@ public class Solution {
 		return count + "A" + count2 + "B";
 	}
 
+	/**
+	 * Given a singly linked list, determine if it is a palindrome.
+	 * @param head
+	 * @return
+	 */
+	public boolean isPalindrome(ListNode head) {
+		return J234MySolution(head);
+	}
+
+	private boolean J234MySolution(ListNode head) {
+		ListNode temp = head;
+		int count = 0;
+		while (temp != null) {
+			temp = temp.next;
+			count++;
+		}
+		Stack<Integer> stack = new Stack<Integer>();
+		//如果为偶数
+		if (count % 2 == 0) {
+			ListNode t = head;
+			int k = count / 2;
+			while (count != k) {
+				stack.push(t.val);
+				t = t.next;
+				count--;
+			}
+			while (t != null) {
+				int val = stack.pop();
+				if (val != t.val) {
+					return false;
+				}
+				t = t.next;
+			}
+			return true;
+		} else {
+			int k = (count+1) / 2;
+			ListNode t = head;
+			while (count != k) {
+				stack.push(t.val);
+				t = t.next;
+				count--;
+			}
+			t = t.next;
+			while (t != null) {
+				int val = stack.pop();
+				if (val != t.val) {
+					return false;
+				}
+				t = t.next;
+			}
+			return true;
+
+		}
+
+	}
+
 	public static void main(String[] args) {
 		Solution s = new Solution();
-		System.out.println(s.canWinNim(5));
-		System.out.println(s.getHint("1234", "0111"));
+		//		System.out.println(s.canWinNim(5));
+		//		System.out.println(s.getHint("1234", "0111"));
+		ListNode l = new ListNode(1);
+		l.next = new ListNode(2);
+		l.next.next = new ListNode(3);
+		l.next.next.next = new ListNode(4);
+		l.next.next.next.next = new ListNode(5);
+		l.next.next.next.next.next = new ListNode(4);
+		l.next.next.next.next.next.next = new ListNode(3);
+		l.next.next.next.next.next.next.next = new ListNode(2);
+		l.next.next.next.next.next.next.next.next = new ListNode(1);
+		//		System.out.println(9 / 2);
+		System.out.println(s.isPalindrome(l));
 	}
 }
