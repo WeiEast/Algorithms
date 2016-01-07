@@ -199,7 +199,7 @@ public class Solution {
 			}
 			return true;
 		} else {
-			int k = (count+1) / 2;
+			int k = (count + 1) / 2;
 			ListNode t = head;
 			while (count != k) {
 				stack.push(t.val);
