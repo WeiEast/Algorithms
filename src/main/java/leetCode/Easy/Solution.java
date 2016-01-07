@@ -164,6 +164,8 @@ public class Solution {
 
 	/**
 	 * Given a singly linked list, determine if it is a palindrome.
+	 * 
+	 * 简单思路为 , 第一遍遍历得到链表的长度 , 然后判断链表的长度为奇数还是偶数 , 然后分别处理 , 并用一个栈还保存已遍历的一半数据 , 方便出栈反序比较
 	 * @param head
 	 * @return
 	 */
