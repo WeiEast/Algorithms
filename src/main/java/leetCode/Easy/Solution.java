@@ -220,20 +220,67 @@ public class Solution {
 
 	}
 
+	/**
+	 * 
+	 * Implement strStr().
+	
+		Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+		
+		Subscribe to see which companies asked this question
+		
+		如果 needle 是 haystack 的子集那么返回第一次出现的位置 , 如果不是返回-1
+		
+	 * 
+	 * @param haystack
+	 * @param needle
+	 * @return
+	 */
+	public int strStr(String haystack, String needle) {
+		if ("".equals(needle)) {
+			return 0;
+		}
+		if (haystack.length() == 0 || needle.length() > haystack.length()) {
+			return -1;
+		}
+		int left = 0;
+		int right = 0;
+		while (left != haystack.length() - 1) {
+			char c = needle.charAt(0);
+			for (int i = left; i < haystack.length(); i++) {
+				if (c == haystack.charAt(i)) {
+					right = 0;
+					for (int j = i; j < needle.length() + i; j++) {
+						if (needle.charAt(right) != haystack.charAt(j)) {
+							break;
+						}
+						right++;
+					}
+					if (right - left == needle.length()) {
+						return i;
+					}
+				}
+			}
+			left++;
+		}
+		return -1;
+
+	}
+
 	public static void main(String[] args) {
 		Solution s = new Solution();
 		//		System.out.println(s.canWinNim(5));
 		//		System.out.println(s.getHint("1234", "0111"));
-		ListNode l = new ListNode(1);
-		l.next = new ListNode(2);
-		l.next.next = new ListNode(3);
-		l.next.next.next = new ListNode(4);
-		l.next.next.next.next = new ListNode(5);
-		l.next.next.next.next.next = new ListNode(4);
-		l.next.next.next.next.next.next = new ListNode(3);
-		l.next.next.next.next.next.next.next = new ListNode(2);
-		l.next.next.next.next.next.next.next.next = new ListNode(1);
+		//		ListNode l = new ListNode(1);
+		//		l.next = new ListNode(2);
+		//		l.next.next = new ListNode(3);
+		//		l.next.next.next = new ListNode(4);
+		//		l.next.next.next.next = new ListNode(5);
+		//		l.next.next.next.next.next = new ListNode(4);
+		//		l.next.next.next.next.next.next = new ListNode(3);
+		//		l.next.next.next.next.next.next.next = new ListNode(2);
+		//		l.next.next.next.next.next.next.next.next = new ListNode(1);
 		//		System.out.println(9 / 2);
-		System.out.println(s.isPalindrome(l));
+		//		System.out.println(s.isPalindrome(l));
+		System.out.println(s.strStr("abcdqqq", "cdq"));
 	}
 }
