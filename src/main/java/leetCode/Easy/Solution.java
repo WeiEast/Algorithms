@@ -135,7 +135,7 @@ public class Solution {
 			map2.put(i, guess.charAt(i));
 		}
 		for (int i = 0; i < guess.length(); i++) {
-			if (map.get(i) == map2.get(i)) {
+			if (map.get(i).equals(map2.get(i))) {
 				count++;
 				map.remove(i);
 				map2.remove(i);

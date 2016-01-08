@@ -1,6 +1,5 @@
 package leetCode.Medium;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -60,9 +59,44 @@ public class Solution {
 		return rs;
 	}
 
+	/**
+	 * 
+	 * reverseWords Solve
+	 * 
+	 * @param s
+	 * @return
+	 */
+	public String reverseWords(String s) {
+		if ("".equals(s)) {
+			return s;
+		}
+		String[] strs = s.split(" ");
+		StringBuffer sbr = new StringBuffer();
+		for (int i = strs.length - 1; i > 0; i--) {
+			if (!"".equals(strs[i])) {
+				sbr.append(strs[i]);
+				sbr.append(" ");
+			}
+		}
+		if (strs != null && strs.length > 0 && !"".equals(strs[0]))
+			sbr.append(strs[0]);
+		String str = sbr.toString();
+		if ("".equals(str)) {
+			return str;
+		}
+		if (strs.length == 1) {
+			return str;
+		}
+		if (str.endsWith(" ")) {
+			return str.substring(0, str.length() - 1);
+		}
+		return str.substring(0, str.length());
+	}
+
 	public static void main(String[] args) {
 		Solution s = new Solution();
-		s.singleNumber(new int[] { 1, 2, 1, 3, 2, 5 });
+		//		s.singleNumber(new int[] { 1, 2, 1, 3, 2, 5 });
+		System.out.println(s.reverseWords(" 1"));
 	}
 
 }
