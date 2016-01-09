@@ -93,10 +93,47 @@ public class Solution {
 		return str.substring(0, str.length());
 	}
 
+	/**
+	 * Say you have an array for which the ith element is the price of a given stock on day i.
+	
+		If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit.
+		
+		Subscribe to see which companies asked this question
+		
+		股票找到最大利润算法 : 要求 只能进行一次交易 设计一个算法 得到最大利益 prices 数组中表示第 i 天股票的价格为 prices[i]
+		
+		解题思路 申请 2N 空间 一个记录利润最大 一个记录价格最低值 , 一次遍历时间复杂度 O(n)
+		
+	 * @param prices
+	 * @return
+	 */
+	public int maxProfit(int[] prices) {
+		if (prices == null || prices.length <= 1) {
+			return 0;
+		}
+		int[] dp = new int[prices.length];
+		dp[0] = 0;
+		int[] min = new int[prices.length];
+		min[0] = prices[0];
+		for (int i = 1; i < prices.length; i++) {
+			if (prices[i] > min[i - 1]) {
+				dp[i] = Math.max(prices[i] - min[i - 1], dp[i - 1]);
+				min[i] = min[i - 1];
+			} else {
+				min[i] = prices[i];
+				dp[i] = dp[i - 1];
+			}
+
+		}
+		return dp[prices.length - 1];
+
+	}
+
 	public static void main(String[] args) {
 		Solution s = new Solution();
 		//		s.singleNumber(new int[] { 1, 2, 1, 3, 2, 5 });
-		System.out.println(s.reverseWords(" 1"));
+		//		System.out.println(s.reverseWords(" 1"));
+		System.out.println(s.maxProfit(new int[] { 1, 4, 2 }));
 	}
 
 }
