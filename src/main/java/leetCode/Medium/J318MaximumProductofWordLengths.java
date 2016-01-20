@@ -20,7 +20,7 @@ package leetCode.Medium;
  *
  */
 public class J318MaximumProductofWordLengths {
-	public int maxProduct(String[] words) {
-		
-	}
+//	public int maxProduct(String[] words) {
+//		
+//	}
 }
