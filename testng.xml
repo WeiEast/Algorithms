@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Suite" parallel="false">
-	<test name="DataProviderTest">
-		<classes>
-			<!-- 最长重复子串 -->
-			<class name="leetCode.LengthOfLongestSubstringTest" />
-		</classes>
-	</test>
+    <test name="DataProviderTest">
+        <classes>
+            <class name="popularInterview.PopularInterviewPractise"/>
+        </classes>
+    </test>
 </suite>
